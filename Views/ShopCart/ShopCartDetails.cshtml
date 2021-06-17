@@ -1,0 +1,51 @@
+﻿@model ShopCartViewModel
+
+
+
+<form asp-controller="ShopCart" asp-action="AddToCart" method="post">
+    <div class="card-group form-group ">
+        <div class=" col-md-6">
+            <div class="card">
+                <div class="card-body">
+
+                    <input type="hidden" name="Id" value="@Model.Podcast.Id" />
+                    <img class="card-img-top" src="~/img/@Model.Podcast.PathToPhoto" />
+                    <h5 class="card-title text-center"> @Model.Podcast.PodcastName</h5>
+                    <p class="card-text">Категорія : @Model.Podcast.PodcastTopic</p>
+                    <p class="card-text">Автор : @Model.Podcast.PodcastAuthor</p>
+                    <a href="@Model.Podcast.PodcastLink">Переглянути подкаст</a>
+                    <p class="card-text">Ціна : @Model.Podcast.PodcastPrice.ToString("c")</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title text-center">
+                    <h5>Введіть деталі замовлення</h5>
+                </div>
+                <div class="input-group mt-4">
+                    <label class="input-group-text" asp-for="Message"></label>
+                    <textarea class="form-control" asp-for="Message"></textarea>
+                    <span asp-validation-for="Message"></span>
+                </div>
+                <div class="input-group mt-4">
+                    <label class="input-group-text" asp-for="Duration"></label>
+                    <textarea class="form-control" asp-for="Duration"></textarea>
+                    <span asp-validation-for="Duration"></span>
+                </div>
+                <div class="input-group mt-4">
+                    <label class="input-group-text" asp-for="PremierTime"></label>
+                    <textarea class="form-control" asp-for="PremierTime"></textarea>
+                    <span asp-validation-for="PremierTime"></span>
+                </div>
+
+                <div class="text-center mt-5">
+                    <input type="submit" value="Додати в корзину" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>

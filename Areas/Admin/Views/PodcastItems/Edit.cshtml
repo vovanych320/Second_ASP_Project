@@ -1,0 +1,110 @@
+﻿@model PodcastItem
+@{
+    string strTitle = "Редагувати запис";
+    ViewBag.Title = strTitle;
+}
+
+
+<div>
+    <h2>@strTitle</h2>
+    <div>
+        <form asp-area="Admin" asp-controller="PodcastItems" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="PathToPhoto" />
+
+            <div asp-validation-summary="All"></div>
+            <div class="card-group">
+                <div class="card border-right-0">
+                    <div class="card-body">
+
+                        <div class="card-img-top">
+                            <img class="img-block" src="~/img/@Model.PathToPhoto" />
+                        </div>
+
+                        <div class="input-group flex-nowrap mb-3">
+                            <label class="input-group-text" asp-for="PathToPhoto"></label>
+                            <input type="file" class="btn" name="titleImageFile" id="titleImageFile" />
+                        </div>
+
+                        <div class="input-group flex-nowrap mb-3">
+                            <label class="input-group-text" asp-for="PodcastName"></label>
+                            <input class="form-control" asp-for="PodcastName" />
+                            <span asp-validation-for="PodcastName"></span>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="card border-left-0">
+                    <div class="card-body">
+                        <div class="input-group flex-nowrap mb-3">
+                            <label class="input-group-text" asp-for="PodcastAuthor"></label>
+                            <input class="form-control" asp-for="PodcastAuthor" />
+                            <span asp-validation-for="PodcastAuthor"></span>
+                        </div>
+                        <div class="input-group flex-nowrap mb-3">
+                            <label class="input-group-text" asp-for="PodcastDuration"></label>
+                            <input class="form-control" asp-for="PodcastDuration" />
+                            <span asp-validation-for="PodcastDuration"></span>
+                        </div>
+                        <div class="input-group flex-nowrap mb-3">
+                            <label class="input-group-text" asp-for="PodcastPremierDate"></label>
+                            <input class="form-control" asp-for="PodcastPremierDate" />
+                            <span asp-validation-for="PodcastPremierDate"></span>
+                        </div>
+                        <div class="list-group flex-nowrap">
+                            <select class="form-select form-select-lg mb-3" aria-label="Default select example" asp-for="PodcastTopic">
+                                <option selected>Оберіть категорію</option>
+                                <option value="IT">IT</option>
+                                <option value="Фото">Фото</option>
+                                <option value="Відео">Відео</option>
+                                <option value="Політика">Політика</option>
+                                <option value="Текст">Текст</option>
+                            </select>
+                        </div>
+                        <div class="input-group flex-nowrap mb-3">
+                            <label class="input-group-text" asp-for="PodcastDescription"></label>
+                            <textarea class="form-control" asp-for="PodcastDescription"></textarea>
+                            <span asp-validation-for="PodcastDescription"></span>
+                        </div>
+                        <div class="input-group flex-nowrap mb-3">
+                            <label class="input-group-text" asp-for="PodcastLink"></label>
+                            <input class="form-control" asp-for="PodcastLink" />
+                            <span asp-validation-for="PodcastLink"></span>
+                        </div>
+                        <div class="input-group flex-nowrap mb-3">
+                            <label class="input-group-text" asp-for="PodcasrListenedAmount"></label>
+                            <input class="form-control" asp-for="PodcasrListenedAmount" />
+                            <span asp-validation-for="PodcasrListenedAmount"></span>
+                        </div>
+                        <div class="input-group flex-nowrap mb-3">
+                            <label class="input-group-text" asp-for="PodcastClients"></label>
+                            <input class="form-control" asp-for="PodcastClients" />
+                            <span asp-validation-for="PodcastClients"></span>
+                        </div>
+                        <div class="input-group flex-nowrap mb-3">
+                            <label class="input-group-text" asp-for="PodcastAudience"></label>
+                            <input class="form-control" asp-for="PodcastAudience" />
+                            <span asp-validation-for="PodcastAudience"></span>
+                        </div>
+                        <div class="input-group flex-nowrap mb-3">
+                            <label class="input-group-text" asp-for="PodcastPrice"></label>
+                            <input class="form-control" asp-for="PodcastPrice" />
+                            <span asp-validation-for="PodcastPrice"></span>
+                        </div>
+                    </div>
+
+                    
+
+                    <input type="submit" value="Зберегти" />
+                </div>
+            </div>
+
+
+           
+
+            
+        </form>
+    </div>
+</div>

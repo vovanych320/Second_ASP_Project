@@ -1,0 +1,30 @@
+﻿@model RegisterViewModel
+
+<div class="card m-auto col-md-7 border-0">
+    <div class="card-body">
+        <h2>Реєстрація нового користувача</h2>
+        <form method="post" asp-controller="Account" asp-action="Register">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-floating">
+                <label asp-for="Email"></label><br />
+                <input class="form-control" asp-for="Email" />
+                <span asp-validation-for="Email"></span>
+            </div>
+
+            <div class="form-floating mt-2">
+                <label asp-for="Password"></label><br />
+                <input class="form-control" asp-for="Password" />
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div class="form-floating mt-2">
+                <label asp-for="PasswordConfirm"></label><br />
+                <input class="form-control" asp-for="PasswordConfirm" />
+                <span asp-validation-for="PasswordConfirm"></span>
+            </div>
+            <div class=" mt-1">
+                <input class="btn btn-primary" type="submit" value="Реєстрація" />
+            </div>
+        </form>
+    </div>
+
+</div>

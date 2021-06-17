@@ -1,0 +1,43 @@
+﻿@model ShopCart
+
+
+<div class="container">
+    @foreach (var el in Model.shopCartItems)
+    {
+        <div class="card-group mt-3 d-flex justify-content-center">
+
+            <div class="card col-md-3">
+               
+                <div class="card-body">
+                    <img class="card-img-top" src="~/img/@el.Podcast.PathToPhoto" />
+                    <h5 class="card-title"> @el.Podcast.PodcastName</h5>
+                    <p class="card-text">Категорія : @el.Podcast.PodcastTopic</p>
+                    <p class="card-text">Автор : @el.Podcast.PodcastAuthor</p>
+                    <p class="card-text">Ціна : @el.Podcast.PodcastPrice.ToString("c")</p>
+                </div>
+            </div>
+
+            <div class="card col-md-3">
+                <div class="card-body">
+                    <div class="card-text">
+                        <h5 class="text-center" >Текст реклами</h5>
+                        <p>@el.Message</p>
+                    </div>
+                    <div class="card-text">
+                        <h5 class="text-center">Тривалість реклами</h5>
+                        <p>@el.Duration</p>
+                    </div>
+                    <div class="card-text">
+                        <h5>Період для реклами</h5>
+                        <p>@el.PremierTime</p>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+
+    }
+   
+    <a class="btn btn-danger d-flex justify-content-center mt-4" asp-controller="Order" asp-action="CheckOut">Замовити</a>
+</div>

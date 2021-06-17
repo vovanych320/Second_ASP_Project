@@ -1,0 +1,19 @@
+﻿@model IQueryable<Order>
+
+
+<div class="row">
+
+
+    @foreach (var el in Model)
+    {
+    <div class="card ml-4 mt-2">
+        <div class="card-body">
+            <h5 class="card-text">Ім'я замовника : @el.Name</h5>
+            <h5 class="card-text">Прізвище замовника : @el.Surname</h5>
+            <h5 class="card-text">Час замовлення : @el.OrderTime</h5>
+            <h5 class="card-text">Email : @el.Email</h5>
+        </div>
+        <a class="btn btn-primary " asp-area="Admin"  asp-controller="Home" asp-action="Details" asp-route-id="@el.Id">Деталі</a>
+    </div>
+    }
+</div>

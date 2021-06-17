@@ -1,0 +1,69 @@
+﻿@model PodcastItem
+
+
+
+
+
+<div class="card-group">
+
+    <div class="card border-right-0">
+        <div class="card-body">
+            <div class="card-img-top">
+                <img class="img-block" src="~/img/@Model.PathToPhoto" />
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card border-left-0">
+        <div class="card-body">
+            <div class="card-title text-center">
+                <h2>@Model.PodcastName</h2>
+            </div>
+
+
+
+            <div class="card-text mt-2">
+                <h5>Категорія: @Model.PodcastTopic</h5>
+            </div>
+            <div class="card-text">
+                <h5>Автор: @Model.PodcastAuthor</h5>
+            </div>
+            <div class="card-text">
+                <h5>Клієнти: @Model.PodcastClients</h5>
+            </div>
+            <div class="card-text">
+                <h5>Аудиторія: @Model.PodcastAudience</h5>
+            </div>
+            <div class="card-text">
+                <h5>Кількість прослуховувань: @Model.PodcasrListenedAmount</h5>
+            </div>
+
+            <div class="card-text">
+                <h5>Тривальсть: @Model.PodcastDuration</h5>
+            </div>
+
+            <div class="card-text">
+                <h5>Дата виходу: @Model.PodcastPremierDate</h5>
+            </div>
+            <nav class="card-link">
+                <a href="@Model.PodcastLink">Переглянути подкаст тут</a>
+            </nav>
+            <div class="card-text">
+                <h5>Ціна: @Model.PodcastPrice</h5>
+            </div>
+
+
+
+
+
+            <div class="card-body">
+                <h6>@Model.PodcastDescription</h6>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+

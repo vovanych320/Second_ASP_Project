@@ -1,0 +1,27 @@
+﻿@model IQueryable<OrderDetails>
+
+
+<div class="row">
+    @foreach (var el in Model)
+    {
+    <div class="card col-md-5 m-4">
+        <div class="card-body">
+            <img src="~/img/@el.Podcast.PathToPhoto" class="card-img-top " />
+            <p class="card-title text-center">@el.Podcast.PodcastName</p>
+            <p class="card-text">Кількість слухачів : @el.Podcast.PodcasrListenedAmount </p>
+            <p class="card-text">Цільова аудиторія : @el.Podcast.PodcastAudience </p>
+            <p class="card-text">Автор подкасту : @el.Podcast.PodcastAuthor </p>
+            <p class="card-text">Клієнти : @el.Podcast.PodcastClients </p>
+            <p class="card-text">Опис : @el.Podcast.PodcastDescription </p>
+            <p class="card-text">Тривалість : @el.Podcast.PodcastDuration </p>
+            <a class="card-link" href="@el.Podcast.PodcastLink">Прослухати подкаст тут</a>
+            <p class="card-text">Категорія : @el.Podcast.PodcastTopic </p>
+            <p class="card-text">Ціна :  @el.Podcast.PodcastPrice </p>
+
+            <p>Повідомлення реклами: @el.Message </p>
+            <p>Триваліть реклами: @el.Duration </p>
+            <p>Період реклами : @el.Period </p>
+        </div>
+    </div>
+    }
+</div>

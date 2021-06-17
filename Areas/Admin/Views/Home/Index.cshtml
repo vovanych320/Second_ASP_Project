@@ -1,0 +1,36 @@
+﻿
+@model IQueryable<PodcastItem>
+
+
+    <div>
+        <div class="card" style="margin-bottom:10px;">
+            <a class="btn btn-primary" asp-area="Admin" asp-controller="PodcastItems" asp-action="Edit" asp-route-id="">Додати подкаст</a>
+        </div>
+
+        @if (Model.Any())
+        {
+            <div class="row">
+                @foreach (var entity in Model)
+                {
+                    <div class="col-md-3" style="margin-bottom:20px;">
+                        <div class="card">
+                            <img class="card-img-top" src="~/img/@entity.PathToPhoto" />
+                            <div class="card-body">
+                                <h5 class="card-title"> @entity.PodcastName</h5>
+                                <p class="card-text">Категорія : @entity.PodcastTopic</p>
+                                <p class="card-text">Автор : @entity.PodcastAuthor</p>
+                                <p class="card-text">Ціна : @entity.PodcastPrice.ToString("c")</p>
+                       
+                                <a class="btn btn-primary" asp-area="Admin" asp-controller="PodcastItems" asp-action="Edit" asp-route-id="@entity.Id">Редагувати</a>
+                                <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="PodcastItems" asp-action="Delete" method="post">
+                                    <input type="hidden" name="id" value="@entity.Id">
+                                    <a class="btn btn-primary"  href="#" onclick="document.getElementById('form-@entity.Id').submit();">Видалити</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        }
+    </div>

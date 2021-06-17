@@ -1,0 +1,72 @@
+﻿
+@model SearchFiltersViewModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<div class="row d-flex justify-content-between">
+
+    <form class="card border-0" asp-controller="Home" asp-action="Podcasts" method="post">
+        <div class="card-body">
+            <input type="text" placeholder="Максимальна ціна" asp-for="PodcastPrice">
+
+            <select class="form-select" asp-for="PodcastCategory" aria-label="Default select example">
+                <option selected>Оберіть категорію</option>
+                <option value="IT">IT</option>
+                <option value="Фото">Фото</option>
+                <option value="Відео">Відео</option>
+                <option value="Політика">Політика</option>
+                <option value="Текст">Текст</option>
+                <option value="Будь-яка">Будь-яка</option>
+            </select>
+
+            <input type="submit" name="name" value="Фільтрувати" />
+        </div>
+
+
+    </form>
+
+
+    <form class="card border-0" asp-controller="Home" asp-action="Podcasts" method="post">
+        <div class="card-body">
+            <input class="form me-4" type="search" asp-for="SearchString" placeholder="Пошук" aria-label="Пошук">
+            <input value="Пошук" type="submit" />
+        </div>
+
+    </form>
+
+
+
+</div>
+
+
+<div class="row">
+
+    @foreach (var entity in Model.Podcasts)
+    {
+        <div class="col-md-3" style="margin-bottom:20px;">
+            <div class="card">
+                <img class="card-img-top" src="~/img/@entity.PathToPhoto" />
+                <div class="card-body">
+                    <h5 class="card-title"> @entity.PodcastName</h5>
+                    <p class="card-text">Категорія : @entity.PodcastTopic</p>
+                    <p class="card-text">Автор : @entity.PodcastAuthor</p>
+                    <p class="card-text">Ціна : @entity.PodcastPrice.ToString("c")</p>
+
+
+                    <a class="btn btn-primary ml-2 mr-4" asp-controller="Home" asp-action="Details" asp-route-id="@entity.Id">Деталі</a>
+
+                    @if(SignInManager.IsSignedIn(User))
+                    {
+                    <form class="d-inline-block" id="form-@entity.Id" asp-controller="ShopCart" asp-action="ShopCartDetails" method="post">
+                        <input type="hidden" name="id" value="@entity.Id">
+                        <a class="btn btn-primary" href="#" onclick="document.getElementById('form-@entity.Id').submit();">В корзину</a>
+                    </form>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
